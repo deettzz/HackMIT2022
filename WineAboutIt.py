@@ -45,9 +45,10 @@ def round_rectangle(x1, y1, x2, y2, radius=25, **kwargs):
 predicted_label = tk.Label
 def values():
     # first input variable from GUI
-    global jokeInput
-    jokeInput = entry1.get()
-    ## PARSING
+    global alcPercInput
+    alcPercInput = entry1.get()
+    global sugPercInput
+    sugPercInput = entry2.get()
     # Features, Input:
     resultsBox = round_rectangle(130, 250, 470, 300, fill="#d9a5b1")
     y_predicted = str(round(model.predict([[alcPercInput, sugPercInput]])[0], 2))
@@ -120,9 +121,13 @@ print_coefs = 'Coefficients: '+ str(coefs_rounded) # sklearn function to derive 
 canvas1.create_text(300, 380, fill="white", font=('futura', 10),text=print_coefs, justify='center')
 # Create entry box to collect input joke
 # First ind variable
-canvas1.create_text(300, 130, fill="white",font=('futura', 22), text='Enter Your Joke: ')
+canvas1.create_text(300, 130, fill="white",font=('futura', 22), text='Enter Alcohol Percentage of Wine: ')
 entry1 = tk.Entry(root, bd=0) # create 1st entry box
 canvas1.create_window(300, 160, width=350, window=entry1)
+# Second ind variable
+canvas1.create_text(300, 130, fill="white",font=('futura', 22), text='Enter Residual Sugar Percentage of Wine: ')
+entry2 = tk.Entry(root, bd=0) # create 1st entry box
+canvas1.create_window(300, 160, width=350, window=entry2)
 # Button inputs datapoint (joke and parsed input from joke) to model and displays output
 model_output_button = tk.Button(root, font=('futura'),text='Get Wine Quality!', bd=0,command=values)
 canvas1.create_window(300, 200, window=model_output_button)
