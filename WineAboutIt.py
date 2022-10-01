@@ -75,7 +75,7 @@ y = df['quality']
 
 ## CREATE MODEL
 # Utilize sklearn to define model
-model = linear_model.LinearRegression()
+model = DecisionTreeClassifier()
 # Cross-validation, split into training and testing data as well
 kf = KFold(n_splits=3, shuffle=True, random_state=None)
 for train_index, test_index in kf.split(X):
@@ -90,9 +90,9 @@ for train_index, test_index in kf.split(X):
 
 ## MODEL METRICS
 y_pred = model.predict(X_test)
-mse = mean_squared_error(y_test, y_pred)
+acc_score = accuracy_score(y_test,y_pred)
 #print(y_test, y_pred)
-print('MSE OF MODEL:', mse)
+print('Accuracy OF MODEL:', acc_score)
 
 ## GUI
 # Initialize GUI
