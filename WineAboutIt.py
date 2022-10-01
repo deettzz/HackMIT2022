@@ -1,5 +1,7 @@
 # Data handling
 import os
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 import pandas as pd
 # Model
 from sklearn import linear_model
@@ -62,7 +64,7 @@ dir = os.path.abspath(os.path.dirname(__file__))
 # -> open data file with this directory
 data_file_address = os.path.join(dir, "WineQuality-Red.csv")
 # -> open gradient2.PNG file with this directory
-gradient_address = os.path.join(dir, "Pictures/gradient2.PNG")
+BG_address = os.path.join(dir, "Pictures/wineBG.PNG")
 # -> open wordArt.PNG file with this directory
 wordArt_address = os.path.join(dir, "Pictures/wordArt.PNG")
 
@@ -101,35 +103,35 @@ canvas1 = tk.Canvas(root, width = 600, height = 400)
 root.resizable(False, False)
 canvas1.pack()
 # Size and background color of output GUI
-background=tk.PhotoImage(file=gradient_address)
+background=tk.PhotoImage(file=BG_address)
 background=background.subsample(2,2)
 canvas1.create_image(300, 200, image = background)
 # Round edges of output GUI
-rect = round_rectangle(100, 105, 500, 225, fill="#d9a5b1")
+rect = round_rectangle(100, 105, 500, 350, fill="#302A28")
 # Add title to output GUI
 root.title("Wine About It!")
 titleArt=tk.PhotoImage(file=wordArt_address)
-titleArt=titleArt.subsample(2,2)
+titleArt=titleArt.subsample(5,5)
 canvas1.create_image(300, 55, image = titleArt)
 # Add final equation of model to output GUI
 # Intercept of equation
-print_intercept = 'Model Intercept: '+str(round(model.intercept_, 4)) # sklearn function to derive intercept
-canvas1.create_text(300, 360, fill="white", font=('futura', 10),text=print_intercept, justify='center')
+#print_intercept = 'Model Intercept: '+str(round(model.intercept_, 4)) # sklearn function to derive intercept
+#canvas1.create_text(300, 360, fill="white", font=('futura', 10),text=print_intercept, justify='center')
 # Coefficients of equation
-coefs_rounded = [round(num, 4) for num in list(model.coef_)]
-print_coefs = 'Coefficients: '+ str(coefs_rounded) # sklearn function to derive intercept
-canvas1.create_text(300, 380, fill="white", font=('futura', 10),text=print_coefs, justify='center')
+#coefs_rounded = [round(num, 4) for num in list(model.coef_)]
+#print_coefs = 'Coefficients: '+ str(coefs_rounded) # sklearn function to derive intercept
+#canvas1.create_text(300, 380, fill="white", font=('futura', 10),text=print_coefs, justify='center')
 # Create entry box to collect input joke
 # First ind variable
-canvas1.create_text(300, 130, fill="white",font=('futura', 22), text='Enter Alcohol Percentage of Wine: ')
+canvas1.create_text(300, 130, fill="white",font=('futura', 10), text='Enter Alcohol Percentage of Wine: ')
 entry1 = tk.Entry(root, bd=0) # create 1st entry box
-canvas1.create_window(300, 160, width=350, window=entry1)
+canvas1.create_window(300, 245, width=350, window=entry1)
 # Second ind variable
-canvas1.create_text(300, 130, fill="white",font=('futura', 22), text='Enter Residual Sugar Percentage of Wine: ')
+canvas1.create_text(300, 215, fill="white",font=('futura', 10), text='Enter Residual Sugar Percentage of Wine: ')
 entry2 = tk.Entry(root, bd=0) # create 1st entry box
-canvas1.create_window(300, 160, width=350, window=entry2)
+canvas1.create_window(300, 170, width=350, window=entry2)
 # Button inputs datapoint (joke and parsed input from joke) to model and displays output
 model_output_button = tk.Button(root, font=('futura'),text='Get Wine Quality!', bd=0,command=values)
-canvas1.create_window(300, 200, window=model_output_button)
+canvas1.create_window(300, 325, window=model_output_button)
 # Continue looping over script with GUI input
 root.mainloop()
