@@ -4,4 +4,4 @@ Ever walk into a store with SO many options for red wine? Lost on which bottle t
 
 ### How to Use
 
-Clone the entire repository. Run the WineAboutIt.py script. Make sure the necessary python libraries are installed. Once sucessfully run, a window will pop up with the tool. Enter sugar and alcohol content values of the wine in percentages. A rating of the wine will be returned!!
+Clone the entire repository. Run the WineAboutIt.py script. Make sure the necessary python libraries are installed. Once successfully run, a window will pop up with the tool. Enter sugar and alcohol content percentage values of the wine. A rating of the wine will be displayed!!
